@@ -32,9 +32,11 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v3
         with:
-          channel-id: ${{ inputs.channel-id }}
+          method: chat.postMessage
+          token: ${{ secrets.botToken }}
           payload: |
             {
+              "channel": "${{ inputs['channel-id'] }}",
               "text": "${{ inputs.component }} deployment ${{ inputs.region }} ${{ inputs.status }}",
               "blocks": [
               {
@@ -71,5 +73,3 @@ jobs:
               }
             ]
             }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.botToken }}
