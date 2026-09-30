@@ -20,9 +20,10 @@ on:
         required: false
         type: string
       runner:
+        description: "Runner label or ARC scale set name to run on"
         required: false
         type: string
-        default: gha-rtg-adikteev-runners
+        default: self-hosted
     secrets:
       botToken:
         required: true
